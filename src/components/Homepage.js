@@ -10,7 +10,7 @@ export default function Homepage(){
       <Navbar/>
       <div className="container" style={{ marginTop: "50px" }}>
         {/* <h1>BONDIVA</h1> */}
-        <div className="row">
+        <div className="row" style={{padding:"5px"}}>
           {items.map((item) => (
             <Item key={item.id} item={item} />
           ))}
