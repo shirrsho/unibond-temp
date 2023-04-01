@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/unibond-temp/static/css/main.21d8862b.css",
+    "main.js": "/unibond-temp/static/js/main.fa78e8d2.js",
+    "index.html": "/unibond-temp/index.html",
+    "main.21d8862b.css.map": "/unibond-temp/static/css/main.21d8862b.css.map",
+    "main.fa78e8d2.js.map": "/unibond-temp/static/js/main.fa78e8d2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.21d8862b.css",
+    "static/js/main.fa78e8d2.js"
+  ]
+}
