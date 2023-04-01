@@ -11,9 +11,9 @@ function App() {
     {/* <Navbar/> */}
     <BrowserRouter>
     <Routes>
-      <Route exact path="/" element={<Homepage />} />
-      <Route path="/:item_id" element={<ItemDetails/>}/>
-      <Route path="/buy/:item_id" element={<Form/>}/>
+      <Route path={`${process.env.PUBLIC_URL}/`} element={<Homepage />} />
+      <Route path={`${process.env.PUBLIC_URL}/:item_id`} element={<ItemDetails/>}/>
+      <Route path={`${process.env.PUBLIC_URL}/buy/:item_id`} element={<Form/>}/>
     </Routes>
   </BrowserRouter>
   </>

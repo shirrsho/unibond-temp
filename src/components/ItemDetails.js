@@ -61,7 +61,7 @@ export default function ItemDetails() {
           <p>Price: ${product?.price}</p>
           <p>{product?.stock} items left</p>
 
-          <Link to={`/buy/${item_id}`}><button className="buybtn">Buy Now</button></Link>
+          <Link to={`${process.env.PUBLIC_URL}/buy/${item_id}`}><button className="buybtn">Buy Now</button></Link>
         </div>
     </div>
     </div>

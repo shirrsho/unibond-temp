@@ -5,7 +5,7 @@ export default function Item ({ item }) {
   const navigate = useNavigate();
   
   const handleclick = () => {
-    navigate(`/${item.id}`);
+    navigate(`${process.env.PUBLIC_URL}/${item.id}`);
   }
 
     return (
