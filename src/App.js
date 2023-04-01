@@ -11,7 +11,7 @@ function App() {
     {/* <Navbar/> */}
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Homepage />} />
+      <Route exact path="/" element={<Homepage />} />
       <Route path="/:item_id" element={<ItemDetails/>}/>
       <Route path="/buy/:item_id" element={<Form/>}/>
     </Routes>
