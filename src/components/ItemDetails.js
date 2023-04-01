@@ -31,6 +31,7 @@ export default function ItemDetails() {
 
   return (
     <div className="detailssection">
+    <div style={{height:"5vh"}}></div>
     <div className="col-md-3">
       <div className="row">
         <div className="image-gallery">
