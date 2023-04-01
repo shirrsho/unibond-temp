@@ -1,64 +1,15 @@
-import React, { useState, useParams } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import '../styles/itemdetails.css';
+import { getAproduct } from "../functionalities";
 
 export default function ItemDetails() {
-  // const { id } = useParams();
-  const product = {
-    id: 1,
-    name: "Item 1",
-    description: "sa adew adwewdasd adadw adasdewrd adasdewdsc aded hassa uuwxsab hsauah",
-    images: [
-      {
-        id: 1,
-        src: 'https://source.unsplash.com/random/500x500',
-      },
-      {
-        id: 2,
-        src: 'https://source.unsplash.com/random/200x200',
-      },
-      {
-        id: 3,
-        src: 'https://source.unsplash.com/random/200x200',
-      },
-      {
-        id: 4,
-        src: 'https://source.unsplash.com/random/200x200',
-      },
-      {
-        id: 5,
-        src: 'https://source.unsplash.com/random/200x200',
-      }
-    ],
-    price: 100
-  };
+  const { item_id } = useParams();
+  const [product,setProduct] = useState(null);
+  // console.log(product);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [quantity, setQuantity] = useState(1);
-  const images = [
-    {
-      id: 1,
-      src: 'https://source.unsplash.com/random/200x200',
-    },
-    {
-      id: 2,
-      src: 'https://source.unsplash.com/random/200x200',
-    },
-    {
-      id: 3,
-      src: 'https://source.unsplash.com/random/200x200',
-    },
-    {
-      id: 4,
-      src: 'https://source.unsplash.com/random/200x200',
-    },
-    {
-      id: 5,
-      src: 'https://source.unsplash.com/random/200x200',
-    }
-  ];
 
   const handleImageClick = (image) => {
-    setQuantity(quantity + 1);
     setSelectedImage(image);
   };
 
@@ -69,9 +20,14 @@ export default function ItemDetails() {
       largeImage.classList.toggle('fullscreen');
     }
   };
-  const handleQuantityChange = (event) => {
-    setQuantity(event.target.value);
-  };
+
+  async function getProduct(item_id){
+    setProduct(await getAproduct(item_id));
+  }
+
+  useEffect(()=>{
+    getProduct(item_id);
+  },[item_id]);
 
   return (
     <div className="detailssection">
@@ -79,18 +35,19 @@ export default function ItemDetails() {
       <div className="row">
         <div className="image-gallery">
           <div className="large-image-container">
+          {/* {product} */}
             <img
-              src={selectedImage ? selectedImage.src : product.images[0].src}
-              alt={selectedImage ? `Image ${selectedImage.id}` : 'Default Image'}
+              src={selectedImage ? selectedImage : product?.images[0]}
+              alt={selectedImage ? `Img` : 'Default Image'}
               onClick={handleFullScreenClick}
             />
           </div>
           <div className="small-images-container">
-            {images.map((image) => (
+            {product!=null && product.images.map((image, key) => (
               <img
-                key={image.id}
-                src={image.src}
-                alt={`Image ${image.id}`}
+                key={key}
+                src={image}
+                alt={`Img`}
                 className={selectedImage === image ? 'selected' : ''}
                 onClick={() => handleImageClick(image)}
               />
@@ -99,29 +56,12 @@ export default function ItemDetails() {
         </div>
       </div>
       <div className="col-md-15" style={{padding:"10px"}}>
-          <h1>{product.name}</h1>
-          <p>{product.description}</p>
-          <p>Price: ${product.price}</p>
-          <div className="form-group">
-            <label htmlFor="quantity">Quantity:</label>
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              min="1"
-              value={quantity}
-              onChange={handleQuantityChange}
-            />
-          </div>
-          <button className="buybtn"
-            onClick={() =>
-              alert(
-                `You have added ${quantity} ${product.name} to your cart.`
-              )
-            }
-          >
-            Buy Now
-          </button>
+          <h1>{product?.name}</h1>
+          <p>{product?.description}</p>
+          <p>Price: ${product?.price}</p>
+          <p>{product?.stock} items left</p>
+
+          <Link to={`/buy/${item_id}`}><button className="buybtn">Buy Now</button></Link>
         </div>
     </div>
     </div>

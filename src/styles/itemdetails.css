@@ -24,7 +24,7 @@
   
   .large-image-container img {
     width:100%;
-    cursor: pointer;
+    cursor: zoom-in;
     transition: 1s ease;
   }
   
@@ -47,7 +47,7 @@
     width: 50px;
     height: 50px;
     object-fit: cover;
-    margin: 0 10px;
+    margin: 0 5px;
     border: 2px solid transparent;
     cursor: pointer;
   }
