@@ -65,7 +65,15 @@ export default function Form() {
 
         if (formData.quantity < 1) {
             errors.quantityError = 'Quantity: At least 1';
-            if(formData.quantity>item.stock)
+            // if(formData.quantity>item.stock)
+            // errors.quantityError = `Only ${item.stock} items left`;
+            isValid = false;
+            document.querySelector('#quantity').classList.add('is-invalid');
+        } else {
+            document.querySelector('#quantity').classList.remove('is-invalid')
+        }
+
+        if(formData.quantity>item.stock){
             errors.quantityError = `Only ${item.stock} items left`;
             isValid = false;
             document.querySelector('#quantity').classList.add('is-invalid');
