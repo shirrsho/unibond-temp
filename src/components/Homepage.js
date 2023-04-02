@@ -14,11 +14,8 @@ export default function Homepage() {
   },[])
   return (
     <div className="main">
-      <Navbar />
       <div className="container" style={{ marginTop: "50px" }}>
-        {/* <h1>BONDIVA</h1> */}
         <div className="row" style={{ padding: "5px" }}>
-        {/* {console.log(items)} */}
           {items?.map((item) => (
             <Item key={item.id} item={item} />
           ))}

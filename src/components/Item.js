@@ -9,7 +9,7 @@ export default function Item ({ item }) {
   }
 
     return (
-      <div onClick={handleclick} className="col-md-3 mb-4" style={{ padding: '30px 30px' }}>
+      <div onClick={handleclick} className="col-md-3 mb-4" style={{ padding: '10px 10px' }}>
         <div className="card mb-4 box-shadow" style={{ borderRadius: '0' }}>
           <img className="card-img-top" width={200} height={200} src={item.thumbnail} alt={item.name} />
           <div className="card-body">
