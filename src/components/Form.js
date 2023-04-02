@@ -118,8 +118,8 @@ export default function Form() {
                     <form  ref={formRef} onSubmit={handleSubmit} className="col-lg-4 col-md-8">
                         <div>
                         <div className="form-row  mb-4">
-                                <label htmlFor="item_id">Item ID:</label>
-                                <input disabled="true" type="text" className="form-control" id="item_id" name="item_id" value={formData.item_id} onChange={handleInputChange} />
+                                {/* <label htmlFor="item_id">Item ID:</label> */}
+                                <input type="hidden" className="form-control" id="item_id" name="item_id" value={formData.item_id} onChange={handleInputChange} />
                                 {/* {formErrors.promoCodeError && <span class="invalid-feedback">{formErrors.promoCodeError}</span>} */}
                             </div>
                             <div className="form-row mb-4">
