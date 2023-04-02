@@ -48,7 +48,7 @@ async function getAnItem(item_id){
     } catch (err) {
       alert(err.message)
     }
-    console.log((item.data()));
+    // console.log((item.data()));
     return item.data();
 }
 
@@ -74,7 +74,7 @@ async function submitForm(info){
             Promo : info.promoCode
           });
         } catch (err) {
-          console.error(err);
+          // console.error(err);
           alert(err.message);
           return false;
         }

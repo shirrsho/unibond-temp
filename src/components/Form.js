@@ -12,7 +12,7 @@ export default function Form() {
     
     async function getItem(item_id){
         setItem(await getAnItem(item_id));
-        console.log(item);
+        // console.log(item);
     }
     useEffect(()=>{
         getItem(item_id);
