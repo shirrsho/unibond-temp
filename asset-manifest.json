@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/unibond-temp/static/css/main.8a60de17.css",
-    "main.js": "/unibond-temp/static/js/main.66a52592.js",
+    "main.css": "/unibond-temp/static/css/main.674741c4.css",
+    "main.js": "/unibond-temp/static/js/main.a9ddcf8b.js",
     "index.html": "/unibond-temp/index.html",
-    "main.8a60de17.css.map": "/unibond-temp/static/css/main.8a60de17.css.map",
-    "main.66a52592.js.map": "/unibond-temp/static/js/main.66a52592.js.map"
+    "main.674741c4.css.map": "/unibond-temp/static/css/main.674741c4.css.map",
+    "main.a9ddcf8b.js.map": "/unibond-temp/static/js/main.a9ddcf8b.js.map"
   },
   "entrypoints": [
-    "static/css/main.8a60de17.css",
-    "static/js/main.66a52592.js"
+    "static/css/main.674741c4.css",
+    "static/js/main.a9ddcf8b.js"
   ]
 }
