@@ -2,7 +2,7 @@ import '../App.css'
 export default function Navbar(){
     return(
         <div className="topbar">
-        <h1 className='brandname'>UNIBOND::BONDIVA</h1>
+        <h1 className='brandname'>UNIBOND::BOND DIVA</h1>
         {/* <nav className="navbar navbar-expand-md navbar-light fixed-top bg-light" style={{marginTop:"80px",border:"0.5px solid gray"}}>
         <div className="container-fluid">
           <button

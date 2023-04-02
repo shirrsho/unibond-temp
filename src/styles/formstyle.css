@@ -1,0 +1,23 @@
+.orderform{
+    /* padding-left: 50%; */
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    gap: 200px;
+    /* align-items:flex-start; */
+    margin-top: 5vh;
+    /* padding: 0 15px; */
+}
+
+@media screen and (max-width: 480px) {
+    .orderform {
+      flex-direction: column;
+      gap: 0;
+      align-items: left;
+      width: calc(screen);
+      overflow-wrap: break-word;
+      padding: 10px;
+    }
+  }

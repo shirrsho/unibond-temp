@@ -4,7 +4,7 @@ import {
     doc,
     getDocs,
     getDoc,
-    addDoc
+    updateDoc
   } from "firebase/firestore";
 
 import { initializeApp } from "firebase/app";
@@ -62,12 +62,33 @@ async function getAproduct(item_id){
     return item.data();
 }
 
-async function submitForm(info){
+async function submitForm(info, item_id, newstock){
         const scriptUrl = "https://script.google.com/macros/s/AKfycbw8dA6WCnN-WVwcOMt6RKiwtVQJEOrOQdQsmllWvyHEc_Jgu0ytb30fSErb8HKP4TgU/exec";
-        console.log(info);
+        // console.log(info);
+        try {
+          // path: must be collection, document, collection, document ...
+          await updateDoc(doc(db, "items", item_id), {
+            stock:newstock
+          });
+        } catch (err) {
+          // console.error(err);
+          alert("product went wrong");
+          return false;
+        }
+        try {
+          // path: must be collection, document, collection, document ...
+          await updateDoc(doc(db, "itemcards", item_id), {
+            stock:newstock
+          });
+        } catch (err) {
+          // console.error(err);
+          alert("item went wrong");
+          return false;
+        }
         try {
           await fetch(scriptUrl, {method: 'POST', body: new FormData(info.current)})
-        } catch(err) { console.log(err) ; return false;}
+        } catch(err) { alert("something went wrong"); return false;}
+        
         return true;
 
         // try {
