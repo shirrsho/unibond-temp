@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { getAnItem } from '../functionalities';
 import Item from './Item';
@@ -9,6 +9,7 @@ export default function Form() {
     const { item_id } = useParams();
     const [item,setItem] = useState(null);
     const [submitted,setSubmitted] = useState(false);
+    const formRef = useRef(null)
     
     async function getItem(item_id){
         setItem(await getAnItem(item_id));
@@ -24,7 +25,8 @@ export default function Form() {
         phone: '',
         address: '',
         txid: '',
-        promoCode: ''
+        promoCode: '',
+        item_id:item_id
     });
 
     const [formErrors, setFormErrors] = useState({
@@ -38,7 +40,7 @@ export default function Form() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (validateForm()) {
-            if(submitForm(formData))
+            if(submitForm(formRef))
                 setSubmitted(true);
             else alert("Something went wrong")
             // Submit the form data to the backend
@@ -113,8 +115,13 @@ export default function Form() {
             <br/><b>Bkash:</b> 01xxxxxxxxxx --- <b>Rocket:</b> 01xxxxxxxxxx</p>
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-lg-4 col-md-8">
+                    <form  ref={formRef} onSubmit={handleSubmit} className="col-lg-4 col-md-8">
                         <div>
+                        <div className="form-row  mb-4">
+                                <label htmlFor="item_id">Item ID:</label>
+                                <input disabled="true" type="text" className="form-control" id="item_id" name="item_id" value={formData.item_id} onChange={handleInputChange} />
+                                {/* {formErrors.promoCodeError && <span class="invalid-feedback">{formErrors.promoCodeError}</span>} */}
+                            </div>
                             <div className="form-row mb-4">
                                 <label htmlFor="quantity">Quantity</label>
                                 <input type="number" className="form-control" id="quantity" name="quantity" value={formData.quantity} onChange={handleInputChange} />
@@ -150,7 +157,7 @@ export default function Form() {
                             </div>}
                             {submitted && <p style={{color:"green"}}>Your order has been placed. Go back to continue browsing.</p>}
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div style={{height:"10vh"}}></div>

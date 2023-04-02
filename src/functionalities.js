@@ -63,22 +63,30 @@ async function getAproduct(item_id){
 }
 
 async function submitForm(info){
+        const scriptUrl = "https://script.google.com/macros/s/AKfycbw8dA6WCnN-WVwcOMt6RKiwtVQJEOrOQdQsmllWvyHEc_Jgu0ytb30fSErb8HKP4TgU/exec";
+        console.log(info);
         try {
-          // path: must be collection, document, collection, document ...
-          await addDoc(collection(db, "orders"), {
-            Name : info.name,
-            Phone : info.phone,
-            Address : info.address,
-            Quantity : info.quantity,
-            TxID : info.txid,
-            Promo : info.promoCode
-          });
-        } catch (err) {
-          // console.error(err);
-          alert(err.message);
-          return false;
-        }
+          await fetch(scriptUrl, {method: 'POST', body: new FormData(info.current)})
+        } catch(err) { console.log(err) ; return false;}
         return true;
+
+        // try {
+        //   // path: must be collection, document, collection, document ...
+        //   await addDoc(collection(db, "orders"), {
+        //     Name : info.name,
+        //     Phone : info.phone,
+        //     Address : info.address,
+        //     Quantity : info.quantity,
+        //     TxID : info.txid,
+        //     Promo : info.promoCode,
+        //     Item : info.item_id
+        //   });
+        // } catch (err) {
+        //   // console.error(err);
+        //   alert(err.message);
+        //   return false;
+        // }
+        // return true;
 }
 
 export {getAllItems,getAnItem,getAproduct,submitForm}
