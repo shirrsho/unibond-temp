@@ -5,8 +5,7 @@ import {
     getDocs,
     getDoc,
     addDoc,
-    updateDoc,
-    Timestamp
+    updateDoc
   } from "firebase/firestore";
 
 import { initializeApp } from "firebase/app";

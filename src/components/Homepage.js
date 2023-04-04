@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Item from './Item';
 import '../App.css'
-import Navbar from "./Navbar";
 import { getAllItems } from "../functionalities";
 
 export default function Homepage() {
@@ -20,7 +19,6 @@ export default function Homepage() {
             <Item key={item.id} item={item} />
           ))}
         </div>
-        <Item item={null}/>
       </div>
     </div>
   );
