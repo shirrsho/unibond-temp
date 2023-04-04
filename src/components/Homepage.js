@@ -20,6 +20,7 @@ export default function Homepage() {
             <Item key={item.id} item={item} />
           ))}
         </div>
+        <Item item={null}/>
       </div>
     </div>
   );
