@@ -122,7 +122,7 @@ export default function Form() {
             {submitted===false && <div style={{ width: "max-content" }}>
                 <p className='text-muted' style={{ marginTop: "-2%", padding: "10px" }}>
                 Please pay the booking fee <strong>100Tk</strong> via Bkash or Rocket.<br />Save the Transaction ID and put that into the respective field.
-                    <br /><b>Bkash:</b> 01xxxxxxxxxx --- <b>Rocket:</b> 01xxxxxxxxxx<br/>
+                    <br /><b>Bkash:</b> 01707368255<br/>
                     <span style={{color:"red"}}>Note: Any incorrect information can lead to order cancelation.</span></p>
                 <div>
                     <div className="container justify-content-center">

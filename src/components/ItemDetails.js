@@ -64,10 +64,14 @@ export default function ItemDetails() {
             </p>
             <Link to={`/buy/${item_id}`}><button className="buybtn">Buy Now</button></Link>
           </div>
+          <p style={{ color: "green", width: "50vh" }}>
+            20% Discount card for first 100 premium customers
+          </p>
+          <br/>
           <b>Description:</b>
           <br /><br />
           <div>
-            {product?.description.map((line, key) => (
+            {product != null && product?.description?.map((line, key) => (
               <p key={key}>{line}</p>
             ))}
           </div>

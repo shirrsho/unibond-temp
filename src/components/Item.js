@@ -11,7 +11,7 @@ export default function Item ({ item }) {
     return (
       <div onClick={handleclick} className="col-md-3 mb-4" style={{ padding: '10px 10px' }}>
         <div className="card mb-4 box-shadow" style={{ borderRadius: '0' }}>
-          <img className="card-img-top" width={200} height={200} src={item.thumbnail} alt={item.name} />
+          <img className="card-img-top" src={item.thumbnail} alt={item.name} />
           <div className="card-body">
             {/* <p className="card-text">{item.description}</p> */}
             <div className="d-flex justify-content-between align-items-center">
