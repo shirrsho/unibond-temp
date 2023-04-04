@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage";
 import ItemDetails from "./components/ItemDetails";
 import Navbar from "./components/Navbar";
 import Form from "./components/Form";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path={"/:item_id"} element={<ItemDetails/>}/>
       <Route path={"/buy/:item_id"} element={<Form/>}/>
     </Routes>
+    <Footer/>
   </HashRouter>
   </>
   );
