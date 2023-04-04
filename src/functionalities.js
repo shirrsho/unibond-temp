@@ -66,13 +66,16 @@ async function submitForm(info, item_id, newstock){
         const scriptUrl = "https://script.google.com/macros/s/AKfycbw8dA6WCnN-WVwcOMt6RKiwtVQJEOrOQdQsmllWvyHEc_Jgu0ytb30fSErb8HKP4TgU/exec";
         // console.log(info);
         try {
+          await fetch(scriptUrl, {method: 'POST', body: new FormData(info.current)})
+        } catch(err) { alert("something went wrong"); return false;}
+        try {
           // path: must be collection, document, collection, document ...
           await updateDoc(doc(db, "items", item_id), {
             stock:newstock
           });
         } catch (err) {
           // console.error(err);
-          alert("product went wrong");
+          alert(err);
           return false;
         }
         try {
@@ -85,9 +88,7 @@ async function submitForm(info, item_id, newstock){
           alert("item went wrong");
           return false;
         }
-        try {
-          await fetch(scriptUrl, {method: 'POST', body: new FormData(info.current)})
-        } catch(err) { alert("something went wrong"); return false;}
+        
         
         return true;
 

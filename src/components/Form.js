@@ -69,11 +69,7 @@ export default function Form() {
             // errors.quantityError = `Only ${item.stock} items left`;
             isValid = false;
             document.querySelector('#quantity').classList.add('is-invalid');
-        } else {
-            document.querySelector('#quantity').classList.remove('is-invalid')
-        }
-
-        if(formData.quantity>item.stock){
+        } else if(formData.quantity>item.stock){
             errors.quantityError = `Only ${item.stock} items left`;
             isValid = false;
             document.querySelector('#quantity').classList.add('is-invalid');
@@ -123,10 +119,11 @@ export default function Form() {
             {/* <div style={{border:"1px solid black", margin:"auto"}}> */}
             {item && <Item item={item} />}
             {/* </div> */}
-            <div style={{ width: "max-content" }}>
+            {!submitted && <div style={{ width: "max-content" }}>
                 <p className='text-muted' style={{ marginTop: "-2%", padding: "10px" }}>
                 Please pay the booking fee <strong>100Tk</strong> via Bkash or Rocket.<br />Save the Transaction ID and put that into the respective field.
-                    <br /><b>Bkash:</b> 01xxxxxxxxxx --- <b>Rocket:</b> 01xxxxxxxxxx</p>
+                    <br /><b>Bkash:</b> 01xxxxxxxxxx --- <b>Rocket:</b> 01xxxxxxxxxx<br/>
+                    <span style={{color:"red"}}>Note: Any incorrect information can lead to order cancelation.</span></p>
                 <div>
                     <div className="container justify-content-center">
                         <form ref={formRef} onSubmit={handleSubmit}>
@@ -166,16 +163,17 @@ export default function Form() {
                                     <input type="text" className="form-control" id="promoCode" name="promoCode" value={formData.promoCode} onChange={handleInputChange} />
                                     {/* {formErrors.promoCodeError && <span class="invalid-feedback">{formErrors.promoCodeError}</span>} */}
                                 </div>
-                                {!submitted && <div className="form-group text-center">
+                                <div className="form-group text-center">
                                     <button className="buybtn" onClick={handleSubmit}>Submit</button>
-                                </div>}
-                                {submitted && <p style={{ color: "green" }}>Your order has been placed. Go back to continue browsing.</p>}
+                                </div>
+                                
                             </div>
                         </form>
                     </div>
                 </div>
                 <div style={{height:"10vh"}}></div>
-            </div>
+            </div>}
+            {submitted && <p style={{ color: "green", fontSize:"1.5rem" }}>Your order has been successfully placed.</p>}
             {/* <div style={{height:"10vh"}}></div>
             <small>UNIBOND</small>
             <div style={{height:"5vh"}}></div> */}
