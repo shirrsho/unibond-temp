@@ -40,7 +40,7 @@ export default function Form() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (validateForm()) {
-            if (submitForm(formRef,item_id,item.stock-formData.quantity))
+            if (submitForm(formData,formRef,item_id,item.stock-formData.quantity))
                 setSubmitted(true);
             else alert("Something went wrong")
             // Submit the form data to the backend
@@ -119,7 +119,7 @@ export default function Form() {
             {/* <div style={{border:"1px solid black", margin:"auto"}}> */}
             {item && <Item item={item} />}
             {/* </div> */}
-            {!submitted && <div style={{ width: "max-content" }}>
+            {submitted===false && <div style={{ width: "max-content" }}>
                 <p className='text-muted' style={{ marginTop: "-2%", padding: "10px" }}>
                 Please pay the booking fee <strong>100Tk</strong> via Bkash or Rocket.<br />Save the Transaction ID and put that into the respective field.
                     <br /><b>Bkash:</b> 01xxxxxxxxxx --- <b>Rocket:</b> 01xxxxxxxxxx<br/>
@@ -173,7 +173,7 @@ export default function Form() {
                 </div>
                 <div style={{height:"10vh"}}></div>
             </div>}
-            {submitted && <p style={{ color: "green", fontSize:"1.5rem" }}>Your order has been successfully placed.</p>}
+            {submitted===true && <p style={{ color: "green", fontSize:"1.5rem" }}>Your order has been successfully placed.</p>}
             {/* <div style={{height:"10vh"}}></div>
             <small>UNIBOND</small>
             <div style={{height:"5vh"}}></div> */}

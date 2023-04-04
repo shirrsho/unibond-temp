@@ -4,7 +4,9 @@ import {
     doc,
     getDocs,
     getDoc,
-    updateDoc
+    addDoc,
+    updateDoc,
+    Timestamp
   } from "firebase/firestore";
 
 import { initializeApp } from "firebase/app";
@@ -62,12 +64,29 @@ async function getAproduct(item_id){
     return item.data();
 }
 
-async function submitForm(info, item_id, newstock){
-        const scriptUrl = "https://script.google.com/macros/s/AKfycbw8dA6WCnN-WVwcOMt6RKiwtVQJEOrOQdQsmllWvyHEc_Jgu0ytb30fSErb8HKP4TgU/exec";
+async function submitForm(data, info, item_id, newstock){
+        // const scriptUrl = "https://script.google.com/macros/s/AKfycbw8dA6WCnN-WVwcOMt6RKiwtVQJEOrOQdQsmllWvyHEc_Jgu0ytb30fSErb8HKP4TgU/exec";
         // console.log(info);
+        // try {
+        //   await fetch(scriptUrl, {method: 'POST', body: new FormData(info.current)})
+        // } catch(err) { alert(err.message); return false;}
         try {
-          await fetch(scriptUrl, {method: 'POST', body: new FormData(info.current)})
-        } catch(err) { alert("something went wrong"); return false;}
+          // path: must be collection, document, collection, document ...
+          await addDoc(collection(db, "orders"), {
+            Name : data.name,
+            Phone : data.phone,
+            Address : data.address,
+            Quantity : data.quantity,
+            TxID : data.txid,
+            Promo : data.promoCode,
+            Item : data.item_id
+          });
+        } catch (err) {
+          // console.error(err);
+          alert(err.message);
+          return false;
+        }
+        // return true;
         try {
           // path: must be collection, document, collection, document ...
           await updateDoc(doc(db, "items", item_id), {
@@ -75,7 +94,7 @@ async function submitForm(info, item_id, newstock){
           });
         } catch (err) {
           // console.error(err);
-          alert(err);
+          alert("product went wrong");
           return false;
         }
         try {
@@ -91,24 +110,6 @@ async function submitForm(info, item_id, newstock){
         
         
         return true;
-
-        // try {
-        //   // path: must be collection, document, collection, document ...
-        //   await addDoc(collection(db, "orders"), {
-        //     Name : info.name,
-        //     Phone : info.phone,
-        //     Address : info.address,
-        //     Quantity : info.quantity,
-        //     TxID : info.txid,
-        //     Promo : info.promoCode,
-        //     Item : info.item_id
-        //   });
-        // } catch (err) {
-        //   // console.error(err);
-        //   alert(err.message);
-        //   return false;
-        // }
-        // return true;
 }
 
 export {getAllItems,getAnItem,getAproduct,submitForm}
